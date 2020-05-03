@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "Ecommerce": {
@@ -28,6 +28,9 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/font-awesome/css/font-awesome.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -66,7 +69,10 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Ecommerce:build"
+            "browserTarget": "Ecommerce:build",
+            "sslKey": "SSL/server.key",
+            "sslCert": "SSL/server.crt",
+            "ssl": true
           },
           "configurations": {
             "production": {
@@ -92,6 +98,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Ecommerce"
+    }
+  },
+  "defaultProject": "Ecommerce",
+  "cli": {
+    "analytics": "56b6953b-a9f7-47af-9088-35618b291a3d"
+  }
 }
