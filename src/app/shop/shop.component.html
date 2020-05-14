@@ -1,0 +1,53 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <section class="col-2">
+            <ng-container *ngIf="types && brands">
+                <h5 class=" my-1" style="font-size: 20px;">Sort</h5>
+                <mat-form-field appearance="outline">
+                    <mat-select (selectionChange)="onSortSelected($event.value)" [(value)]="shopParams.sort">
+                        <mat-option *ngFor="let sort of sortOptions" [value]="sort.value">
+                            {{sort.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <h5 class=" my-1" style="font-size: 20px;">Brands</h5>
+                <ul class="list-group my-3">
+                    <li class="list-group-item" *ngFor="let brand of brands"
+                        [class.active]="brand.id === this.shopParams.brandId" [value]="brand.id"
+                        (click)="onBrandSelected(brand.id)" style="cursor: pointer;"> {{brand.name}} </li>
+                </ul>
+                <h5 class=" my-1" style="font-size: 20px;" color="primary">Types</h5>
+                <ul class="list-group my-3">
+                    <li class="list-group-item" *ngFor="let type of types"
+                        [class.active]="type.id === this.shopParams.typeId" [value]="type.id"
+                        (click)="onTypeSelected(type.id)" style="cursor: pointer;">{{type.name}}</li>
+                </ul>
+            </ng-container>
+        </section>
+        <section class="col-md-10">
+            <div class="d-flex justify-content-between align-items-center ">
+                <app-paging-header [totalCount]="totalCount" [pageSize]="this.shopParams.pageSize"
+                    [pageNumber]="this.shopParams.pageNumber">
+                </app-paging-header>
+                <div class="form-inline mt-2" *ngIf="products">
+                    <mat-form-field appearance="outline" style="width: 400px;" class="mt-2">
+                        <mat-label>Search Products</mat-label>
+                        <input matInput (keyup.enter)="onSearch()" #search>
+                    </mat-form-field>
+                    <button class=" ml-2 my-2" (click)="onSearch()" color="primary" mat-raised-button>Search</button>
+                    <button class=" ml-2 my-2" (click)="onReset()" mat-raised-button color="accent">Reset</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-4" *ngFor="let product of products">
+                    <app-product-item [product]="product"></app-product-item>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <app-pager [pageSize]="this.shopParams.pageSize" [totalCount]="totalCount"
+                    (pageChanged)="onPageChanged($event)"></app-pager>
+            </div>
+        </section>
+    </div>
+
+</div>

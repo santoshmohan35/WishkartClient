@@ -1,0 +1,34 @@
+<mat-toolbar color="primary" class="mat-elevation-z5 d-flex flex-column flex-md-row  align-items-center  p-3 px-md-4 mb-3 fixed-top">
+  <img src="../../assets/images/logo.png" style="max-height: 50px; max-width: 70;" alt="logo">
+  <span class="example-spacer"></span>
+  <nav class="align-items-center text-center text-uppercase" style=" font-size: larger;">
+    <a mat-button class="p-2 text-white" [routerLink]="['/']" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a mat-button class="p-2 text-white" routerLink="/shop" routerLinkActive="active">Shop</a>
+    <a mat-button class="p-2 text-white" routerLink="/test-error" routerLinkActive="active">Error</a>
+  </nav>
+  <span class="example-spacer"></span>
+  <div class="d-flex align-items-center ml-5">
+    <a *ngIf="(basket | async) as basket" class="ml-5 mt-3" href="" matTooltip="Shopping Cart" routerLink='/basket'>
+      <mat-icon style="color: white; font-size: 30px;" matBadge="{{basket.items.length}}" matBadgeColor="accent">
+        shopping_cart_outline</mat-icon>
+    </a>
+    <div *ngIf="(currentUser | async) === null" class="ml-5">
+      <a mat-raised-button class=" mr-2 ml-4" routerLink="/account/login">Login</a>
+      <a mat-raised-button color="white" class=" mr-3" routerLink="/account/register">Sign up</a>
+    </div>
+    <div class="ml-5 " *ngIf="currentUser | async">
+      <div class="dropdown ml-3 mr-5" dropdown>
+        <a  class="dropdown-toggle" style="cursor: pointer;" dropdownToggle >
+          <strong>Welcome {{(currentUser | async).displayName}}</strong>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+          <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-shopping-cart mr-3"></i>My Basket</a>
+          <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-history  mr-3"></i>My Orders</a>
+          <div class="dropdown-divider"></div>
+          <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-sign-out  mr-3"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

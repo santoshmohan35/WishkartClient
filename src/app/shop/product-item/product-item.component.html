@@ -1,0 +1,16 @@
+<mat-card class="mat-elevation-z4 h-100">
+  <div class="content" style="cursor: pointer;">
+    <div class="content-overlay"></div>
+    <img class="content-image" mat-card-image src="{{product.pictureUrl}}" alt="{{product.name}}" class=" bg-info" height="200">
+    <div class="d-flex align-items-center justify-content-center content-details fadeIn-top">
+          <button (click)="addItemToBasket()" type="button" mat-raised-button color="warn" class="btn" class="fa fa-shopping-cart mr-2"></button>
+          <button mat-raised-button color="primary" class="btn" routerLink="/shop/{{product.id}}">View</button>
+    </div>
+  </div>
+  <mat-card-content class="mt-3 mb-3">
+    <a routerLink="/shop/{{product.id}}">
+      <h6 class="text-uppercase font-weight-bold ml-2" style="font-size: 14px;">{{product.name}}</h6>
+    </a>
+    <span class="mb-2 font-weight-bold ml-2 mb-3">&#x20b9;{{product.price}}</span>
+  </mat-card-content>
+</mat-card>

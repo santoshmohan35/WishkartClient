@@ -1,0 +1,17 @@
+
+<mat-card-content>
+    <mat-form-field appearance="outline" style="width: 400px;">
+        <mat-label>Email Id</mat-label>
+        <input matInput placeholder="e.g xyz@test.com" 
+              [ngClass]="(controlDir && controlDir.control &&
+              controlDir.control.touched)" ? !controlDir.control.valid ? 'is-invalid' : 'is-valid' : null"
+              [type]="type" 
+                id="{{label}}" 
+              (input)="onChange($event.target.value)" 
+              (blur)="onTouched()" #input>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <div *ngIf="controlDir && controlDir.control && !controlDir.control.valid && controlDir.control.touched">
+            <mat-hint class="text-danger" *ngIf="controlDir.control.errors?.required" >{{label}} is required</mat-hint>
+        </div>
+    </mat-form-field>
+</mat-card-content>
