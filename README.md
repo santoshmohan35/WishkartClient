@@ -1,6 +1,8 @@
 # Ecommerce
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6. and Angular Material
+Including features of login, registration, forms, pagination, filtering, sorting, searching, error handling, authentication,
+payment gateway integration and much more.
 
 ## Development server
 
