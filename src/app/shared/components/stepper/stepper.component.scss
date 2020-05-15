@@ -1,0 +1,12 @@
+.nav-pills .nav-link.active{
+   background: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146))
+}
+
+button.nav-link {
+   border-radius: 0;
+   border: none;
+
+   &:focus{
+      outline: none;
+   }
+}

@@ -1,0 +1,49 @@
+<ng-container *ngIf="basket$ |async">
+    <mat-card class="mat-elevation-z3 mb-3" *ngFor="let item of (basket$ |async).items">
+        <div class="row" *ngIf="!isBasket">
+            <div class="col-md-3">
+                <img matCardImage src="{{item.pictureUrl}}" alt="{{item.productName}}" class="img-fluid" height="112"
+                    width="80">
+            </div>
+            <div class="col-md-4 mt-2">
+                <a routerLink="/shop/{{item.id}}">
+                    <h4 style="margin-bottom: 0px;">{{item.productName}}</h4>
+                </a>
+                <i>Type:{{item.type}}</i>
+            </div>
+            <div class="col-md-2  mt-2">
+                <h2>&#x20b9;{{item.price}}</h2>
+            </div>
+        </div>
+        <div class="row" *ngIf="isBasket">
+            <div class="col-md-3">
+                <img matCardImage src="{{item.pictureUrl}}" alt="{{item.productName}}" class="img-fluid" height="112"
+                    width="80">
+            </div>
+            <div class="col-md-4 mt-5">
+                <a routerLink="/shop/{{item.id}}">
+                    <h4 style="margin-bottom: 0px;">{{item.productName}}</h4>
+                </a>
+                <i>Type:{{item.type}}</i>
+            </div>
+            <div class="col-md-2  mt-5">
+                <h2>&#x20b9;{{item.price}}</h2>
+            </div>
+            <div class="col-md-2  mt-5">
+                <div class="d-flex justify-content-start align-items-center">
+                    <i (click)="decrementItemQuantity(item)" class="fa fa-minus-circle text-warning mr-2"
+                        style="cursor: pointer; font-size: 2em;"></i>
+                    <span class="font-weight-bold" style="font-size: 1.5em;">{{item.quantity}}</span>
+                    <i (click)="incrementItemQuantity(item)" class="fa fa-plus-circle text-warning mx-2"
+                        style="cursor: pointer; font-size: 2em;"></i>
+                </div>
+                <h4 class="ml-2">Quantity</h4>
+            </div>
+            <div class="col-md-1  mt-5">
+                <mat-icon (click)="removeBasketItem(item)" mat-raised-button color="warn"
+                    style="cursor: pointer; font-size: 40px;">
+                    delete_forever_outline</mat-icon>
+            </div>
+        </div>
+    </mat-card>
+</ng-container>

@@ -1,49 +1,22 @@
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <div *ngIf="(basket | async) === null">
         <p>There is not items in your basket</p>
     </div>
     <div *ngIf="(basket | async) as basket">
-        <div class="pb-5">
+        <div class="pb-4">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
-                        <mat-card class="mat-elevation-z3 mb-3" *ngFor="let item of basket.items"
-                            >
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img matCardImage src="{{item.pictureUrl}}" alt="{{item.productName}}"
-                                        class="img-fluid" height="112" width="80">
-                                </div>
-                                <div class="col-md-3 mt-5">
-                                    <a routerLink="/shop/{{item.id}}">
-                                        <h4 style="margin-bottom: 0px;">{{item.productName}}</h4>
-                                    </a>
-                                    <i>Type:{{item.type}}</i>
-                                </div>
-                                <div class="col-md-2  mt-5">
-                                    <h2>&#x20b9;{{item.price}}</h2>
-                                </div>
-                                <div class="col-md-2  mt-5">
-                                    <div class="d-flex justify-content-start align-items-center">
-                                        <i (click)="decrementItemQuantity(item)" class="fa fa-minus-circle text-warning mr-2" style="cursor: pointer; font-size: 2em;"></i>
-                                        <span class="font-weight-bold" style="font-size: 1.5em;">{{item.quantity}}</span>
-                                        <i (click)="incrementItemQuantity(item)" class="fa fa-plus-circle text-warning mx-2" style="cursor: pointer; font-size: 2em;"></i>
-                                    </div>
-                                    <h4 class="ml-2">Quantity</h4>
-                                </div>
-                                <div class="col-md-2  mt-5">
-                                    <button (click)="removeBasketItem(item)" mat-raised-button color="primary">REMOVE</button>
-                                </div>
-                            </div>
-                        </mat-card>
+                        <app-basket-summary (decrement)="decrementItemQuantity($event)"
+                            (increment)="incrementItemQuantity($event)" (remove)="removeBasketItem($event)">
+                        </app-basket-summary>
                     </div>
                     <div class="col-md-4">
                         <mat-card class="mat-elevation-z4">
-                            <mat-card-title>PRICE DETAILS</mat-card-title>
-                            <hr>
                             <mat-card-content>
                                 <app-order-totals></app-order-totals>
-                                <a routerLink='/checkout' class="btn-block" mat-raised-button color='warn'>Proceed to Checkout</a>
+                                <a routerLink='/checkout' class="btn-block" mat-raised-button color='warn'>Proceed to
+                                    Checkout</a>
                             </mat-card-content>
                         </mat-card>
                     </div>

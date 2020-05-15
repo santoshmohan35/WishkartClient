@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="mat-elevation-z5 d-flex flex-column flex-md-row  align-items-center  p-3 px-md-4 mb-3 fixed-top">
-  <img src="../../assets/images/logo.png" style="max-height: 50px; max-width: 70;" alt="logo">
+  <img src="../../assets/images/logo.png" style="max-height: 45px; max-width: 70; outline: none; cursor: pointer;" alt="logo" routerLink='/'>
   <span class="example-spacer"></span>
   <nav class="align-items-center text-center text-uppercase" style=" font-size: larger;">
     <a mat-button class="p-2 text-white" [routerLink]="['/']" routerLinkActive="active"
@@ -23,8 +23,13 @@
           <strong>Welcome {{(currentUser | async).displayName}}</strong>
         </a>
         <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
-          <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-shopping-cart mr-3"></i>My Basket</a>
-          <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-history  mr-3"></i>My Orders</a>
+          <a  class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-user-circle mr-3"></i>My Profile</a>
+          <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-shopping-cart mr-3"></i>Basket</a>
+          <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-shopping-bag  mr-3"></i>Orders</a>
+          <a  class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-address-card-o mr-3"></i>Coupons</a>
+          <a  class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-gift mr-3"></i>Gift Cards</a>
+          <a  class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-bell-o mr-3"></i>Notifications</a>
+
           <div class="dropdown-divider"></div>
           <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2"><i class="fa fa-sign-out  mr-3"></i>Logout</a>
         </div>

@@ -1,6 +1,6 @@
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-3 mb-3" style="background-color: #F1F3F6;">
     <div class="row">
-        <section class="col-2">
+        <mat-card class="col-md-2 bg-white card">
             <ng-container *ngIf="types && brands">
                 <h5 class=" my-1" style="font-size: 20px;">Sort</h5>
                 <mat-form-field appearance="outline">
@@ -23,9 +23,9 @@
                         (click)="onTypeSelected(type.id)" style="cursor: pointer;">{{type.name}}</li>
                 </ul>
             </ng-container>
-        </section>
-        <section class="col-md-10">
-            <div class="d-flex justify-content-between align-items-center ">
+        </mat-card>
+        <section class="col-md-10 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
                 <app-paging-header [totalCount]="totalCount" [pageSize]="this.shopParams.pageSize"
                     [pageNumber]="this.shopParams.pageNumber">
                 </app-paging-header>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 mb-4" *ngFor="let product of products">
+                <div class="col-md-3 mb-3" *ngFor="let product of products" style="padding: 0;">
                     <app-product-item [product]="product"></app-product-item>
                 </div>
             </div>

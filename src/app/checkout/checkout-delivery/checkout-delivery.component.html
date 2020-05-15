@@ -1,0 +1,17 @@
+<div class="mt-4 ml-3" [formGroup]="checkoutDeliveryForm">
+    <h4 class="font-weight-bold" style="font-size: large;">Select your suitable delivery method</h4>
+    <div class="row" formGroupName="deliveryForm">
+        <mat-radio-group class="col-md-6" formControlName="deliveryMethod" aria-label="Select an option">
+            <mat-radio-button (click)="setShippingPrice(method)" value="{{method.id}}" *ngFor="let method of deliveryMethod">
+                {{method.shortName}} - &#x20b9;{{method.price}} <span>{{method.description}}</span></mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<div class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5 mt-4">
+    <button mat-raised-button cdkStepperPrevious>
+        <mat-icon style="font-size: 40;">navigate_before</mat-icon> Back to Address
+    </button>
+    <button mat-raised-button cdkStepperNext>
+        Go to Review <mat-icon style="font-size: 40;">navigate_next</mat-icon> 
+    </button>
+</div>

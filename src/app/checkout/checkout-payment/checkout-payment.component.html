@@ -1,0 +1,11 @@
+<p>checkout-payment works!</p>
+
+<div class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5">
+    <button mat-raised-button cdkStepperPrevious style="background: linear-gradient(to right, rgb(71, 118, 230), rgb(142, 84, 233));
+    color: white;">
+        <mat-icon style="font-size: 40;">navigate_before</mat-icon> Back to Review
+    </button>
+    <button (click)="submitOrder()" mat-raised-button cdkStepperNext color="Accent" style="background: linear-gradient(to right, rgb(253, 252, 71), rgb(36, 254, 65))">
+        Place Order <mat-icon style="font-size: 40;">thumb_up</mat-icon> 
+    </button>
+</div>
