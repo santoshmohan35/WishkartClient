@@ -1,20 +1,25 @@
 <div class="container-fluid mt-5">
-    <div *ngIf="(basket | async) === null">
+    <div *ngIf="(basket$ | async) === null">
         <p>There is not items in your basket</p>
     </div>
-    <div *ngIf="(basket | async) as basket">
+    <div *ngIf="(basket$ | async) as basket">
         <div class="pb-4">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8">
                         <app-basket-summary (decrement)="decrementItemQuantity($event)"
-                            (increment)="incrementItemQuantity($event)" (remove)="removeBasketItem($event)">
+                            (increment)="incrementItemQuantity($event)" (remove)="removeBasketItem($event)"
+                            [items]="(basket$ |async).items">
                         </app-basket-summary>
                     </div>
                     <div class="col-md-4">
                         <mat-card class="mat-elevation-z4">
                             <mat-card-content>
-                                <app-order-totals></app-order-totals>
+                                <app-order-totals *ngIf="(basketTotals$ | async)"
+                                    [shippingPrice]="(basketTotals$ | async).shipping"
+                                    [subtotal]="(basketTotals$ | async).subtotal"
+                                    [total]="(basketTotals$ | async).total">
+                                    ></app-order-totals>
                                 <a routerLink='/checkout' class="btn-block" mat-raised-button color='warn'>Proceed to
                                     Checkout</a>
                             </mat-card-content>

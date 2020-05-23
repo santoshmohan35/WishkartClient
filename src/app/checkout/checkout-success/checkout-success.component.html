@@ -1,5 +1,10 @@
-<div class="container mt-5">
-    <div><i class="fa fa-check-circle fa-5x" style="color: green;"></i></div>
-    <h2>Thank you. Your order has been placed successfully.</h2>
-    <button mat-raised-button>View your order</button>
-</div>
+<mat-card class="container mat-elevation-z5  mt-5" style="border: 2px solid green;">
+    <div class="row d-flex justify-content-center">
+        <div><i class="fa fa-check-circle fa-5x" style="color: green;"></i></div>
+        <h2 class="mt-3 ml-3">Thank you. Your order has been placed successfully.</h2>
+    </div>
+    <mat-card-footer class="row d-flex justify-content-center mb-4">
+        <button routerLink='/orders/{{order?.id}}' mat-raised-button color="accent">View your Orders</button>
+        <button routerLink='/shop' mat-raised-button color="primary" class="ml-3">Go to Store</button>
+    </mat-card-footer>
+</mat-card>

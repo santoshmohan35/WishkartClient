@@ -6,6 +6,7 @@
       [routerLinkActiveOptions]="{exact: true}">Home</a>
     <a mat-button class="p-2 text-white" routerLink="/shop" routerLinkActive="active">Shop</a>
     <a mat-button class="p-2 text-white" routerLink="/test-error" routerLinkActive="active">Error</a>
+    <a *ngIf="(isAdmin$ | async)" mat-button class="p-2 text-white" routerLink="/admin" routerLinkActive="active">Admin</a>
   </nav>
   <span class="example-spacer"></span>
   <div class="d-flex align-items-center ml-5">

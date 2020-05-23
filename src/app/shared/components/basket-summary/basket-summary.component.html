@@ -1,18 +1,21 @@
-<ng-container *ngIf="basket$ |async">
-    <mat-card class="mat-elevation-z3 mb-3" *ngFor="let item of (basket$ |async).items">
+<ng-container *ngIf="items.length > 0">
+    <mat-card class="mat-elevation-z3 mb-3" *ngFor="let item of items">
         <div class="row" *ngIf="!isBasket">
             <div class="col-md-3">
                 <img matCardImage src="{{item.pictureUrl}}" alt="{{item.productName}}" class="img-fluid" height="112"
                     width="80">
             </div>
-            <div class="col-md-4 mt-2">
+            <div class="col-md-4 mt-3">
                 <a routerLink="/shop/{{item.id}}">
                     <h4 style="margin-bottom: 0px;">{{item.productName}}</h4>
                 </a>
                 <i>Type:{{item.type}}</i>
             </div>
-            <div class="col-md-2  mt-2">
+            <div class="col-md-2  mt-3">
                 <h2>&#x20b9;{{item.price}}</h2>
+            </div>
+            <div class="col-md-2 mt-3">
+                <h2>{{item.quantity}}</h2>
             </div>
         </div>
         <div class="row" *ngIf="isBasket">
@@ -21,10 +24,10 @@
                     width="80">
             </div>
             <div class="col-md-4 mt-5">
-                <a routerLink="/shop/{{item.id}}">
+                <a routerLink="/shop/{{item.id || item.productId}}">
                     <h4 style="margin-bottom: 0px;">{{item.productName}}</h4>
                 </a>
-                <i>Type:{{item.type}}</i>
+                <i *ngIf="item.type">Type:{{item.type}}</i>
             </div>
             <div class="col-md-2  mt-5">
                 <h2>&#x20b9;{{item.price}}</h2>

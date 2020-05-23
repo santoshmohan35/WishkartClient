@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ShopService {
   baseUrl = environment.apiUrl;
+    shopParams = new ShopParams();
   constructor(private http: HttpClient) { }
 
   getProducts(shopParams: ShopParams) {
@@ -38,6 +39,14 @@ export class ShopService {
         })
       );
   }
+  getShopParams() {
+    return this.shopParams;
+  }
+
+  setShopParams(params: ShopParams) {
+    this.shopParams = params;
+  }
+
   getProduct(id: number) {
     return this.http.get<IProduct>(this.baseUrl + 'products/' + id);
   }
